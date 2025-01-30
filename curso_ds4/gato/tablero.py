@@ -48,7 +48,7 @@ def usuario(simbolos:dict):
                 print('Casilla ocupada')
     
     
-    
+    a 
 if __name__ == '__main__':
     numeros = [str(i) for i in range(1,10)]
     dsimbolos = {x:x for x in numeros}
