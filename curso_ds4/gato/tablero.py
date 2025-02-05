@@ -39,7 +39,7 @@ def usuario(simbolos:dict):
             else:
                 print('Casilla ocupada')
                 
-def juego(simbolos:dict):
+def juego(simbolos:dict):    
     ''' Juego del gato '''
     lista_combinaciones = [
         ['1','2','3'],
@@ -54,8 +54,8 @@ def juego(simbolos:dict):
     en_juego = True
     dibuja_tablero(simbolos)
     movimiento = 0
-    
-    while en_juego is True:
+    gana = None
+    while en_juego:
         usuario(simbolos)
         dibuja_tablero(simbolos)
         movimiento += 1
@@ -82,7 +82,9 @@ def juego(simbolos:dict):
         if gana is not None:
             en_juego = False
             continue
-        
+        if movimiento >= 9:
+            en_juego = False
+            continue
         
         '''checa_winner(simbolos,lista_combinaciones)
         if checa_winner(simbolos,lista_combinaciones) is not None:
@@ -93,6 +95,7 @@ def juego(simbolos:dict):
             print('Empate')
             en_juego = False
             break'''
+    return gana
     
 
 def checa_winner(simbolos:dict,combinaciones:list):
@@ -106,7 +109,11 @@ def checa_winner(simbolos:dict,combinaciones:list):
 if __name__ == '__main__':
     numeros = [str(i) for i in range(1,10)]
     dsimbolos = {x:x for x in numeros}
-    juego(dsimbolos)
+    g = juego(dsimbolos)
+    if g is not None:
+        print(f'El ganador es {g}')
+    else:
+        print('Empate')
     
     '''
     dibuja_tablero(dsimbolos)
