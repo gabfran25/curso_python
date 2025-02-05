@@ -104,7 +104,6 @@ def checa_winner(simbolos:dict,combinaciones:list):
         if simbolos[c[0]] == simbolos[c[1]] == simbolos[c[2]]:
             return simbolos[c[0]]
     return None
-    
 
 if __name__ == '__main__':
     numeros = [str(i) for i in range(1,10)]
