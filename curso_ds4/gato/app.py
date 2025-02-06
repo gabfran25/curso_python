@@ -16,7 +16,10 @@ def main():
         g = tablero.juego(dsimbolos)
         tablero.actualiza_score(score,g)
         tablero.despliega_tablero(score)
-
+        seguir = input('¿Quieres jugar de nuevo? (s/n):  ')
+        if seguir.lower() == 'n' or seguir.lower() == 'no':
+            print('¡¡Gracias por jugar!!')
+            corriendo = False
         
 
 if __name__ == '__main__':
