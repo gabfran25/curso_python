@@ -11,7 +11,7 @@ def carga_archivo_texto(archivo:str)->list:
     return oraciones
 
 if __name__ == '__main__':
-    lista = carga_archivo_texto('curso_ds4\ahorcado\plantillas\plantilla-0.txt')
+    lista = carga_archivo_texto(r'curso_ds4\ahorcado\plantillas\plantilla-0.txt')
     for elemento in lista:
         print(elemento)
     
