@@ -10,8 +10,33 @@ def carga_archivo_texto(archivo:str)->list:
         oraciones = file.readlines()
     return oraciones
 
-if __name__ == '__main__':
-    lista = carga_archivo_texto('./curso_ds4/ahorcado/plantillas/plantilla-0.txt')
-    for elemento in lista:
-        print(elemento)
+def carga_plantilla(nombre_plantilla:str)->dict:
+    '''
+    Carga una plantilla de un archivo de texto y la devuelve como una lista de palabras.
+    En este caso carga las plantillas del juego apartir de un archivo de texto
+    '''
+    plantillas = {}
+    for i in range(6):
+        plantillas[i] = carga_archivo_texto(f'./curso_ds4/ahorcado/plantillas/{nombre_plantilla}-{i}.txt')
+    return plantillas
+
+def despliega_plantilla(diccionario:dict, nivel:int):
+    '''
+    Despliega la plantilla del nivel correspondiente
+    '''
+    if nivel in diccionario:
+        template = diccionario[nivel]
+        for renglon in template:
+            print(renglon)
     
+
+
+if __name__ == '__main__':
+    plantillas = carga_plantilla('plantilla')
+    despliega_plantilla(plantillas, 5)
+    despliega_plantilla(plantillas, 4)
+    despliega_plantilla(plantillas, 3)
+    despliega_plantilla(plantillas, 2)
+    despliega_plantilla(plantillas, 1)
+    despliega_plantilla(plantillas, 0)
+    despliega_plantilla(plantillas, 6)
