@@ -50,7 +50,7 @@ def obten_palabras(lista:list)->list:
     set_palabras = {unicodedata.normalize('NFKD', palabra).encode('ASCII', 'ignore').decode('ASCII') for palabra in set_palabras}
     return list(set_palabras)
 
-def adivina_letra(abc:dict, palabra:str, letras_adivinadas:set, turnos:int):
+def adivina_letra(abc:dict, palabra:str, letras_adivinadas:set, turnos:int)->int:
     '''
     Adivina una letra de la palabra
     '''
@@ -61,7 +61,8 @@ def adivina_letra(abc:dict, palabra:str, letras_adivinadas:set, turnos:int):
         else:
             palabra_oculta += "_"
     print(f"Tienes {turnos} oportunidades de fallar")
-    print(f'El abecedario es: {abc}')
+    abc_str = ' '.join(abc.values())
+    print(f'El abecedario es: {abc_str}')
     print(f'La palabra es: {palabra_oculta}')
     letra = input("Ingresa una letra: ")
     letra = letra.lower()
