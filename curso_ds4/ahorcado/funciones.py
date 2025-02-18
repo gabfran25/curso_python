@@ -76,14 +76,12 @@ def adivina_letra(abc:dict, palabra:str, letras_adivinadas:set, turnos:int)->int
             else:
                 turnos -= 1
                 print("Letra incorrecta")
-            
-    
-    
+    return turnos           
 
 if __name__ == '__main__':
     plantillas = carga_plantilla('plantilla')
     despliega_plantilla(plantillas, 5)
-    lista_oraciones = carga_archivo_texto('./curso_ds4/ahorcado/datos/pg15532.txt')
+    lista_oraciones = carga_archivo_texto('./curso_ds4/ahorcado/datos/la_odisea.txt')
     lista_palabras = obten_palabras(lista_oraciones)
     print(len(lista_palabras))
     p = choice(lista_palabras)
@@ -91,6 +89,7 @@ if __name__ == '__main__':
     abecedario = {letra:letra for letra in string.ascii_lowercase}
     adivinadas =set()
     t = 5 # oportunidades
-    adivina_letra(abecedario, p, adivinadas, t)
-    adivina_letra(abecedario, p, adivinadas, t)
-    
+    t = adivina_letra(abecedario, p, adivinadas, t)
+    print(t)
+    t = adivina_letra(abecedario, p, adivinadas, t)
+    print(t)    
