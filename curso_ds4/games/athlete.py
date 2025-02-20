@@ -9,8 +9,13 @@ class Athlete:
     def __repr__(self):
         return f"Athlete('{self.name}')"
     
+    def to_json(self)->dict:
+        return {"name":self.name}
+    
     def display(self):
         print(f"{self.name}")
+        
+    
 
 if __name__ == "__main__":
     a = Athlete("Ana G.")

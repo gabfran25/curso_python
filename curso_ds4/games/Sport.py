@@ -45,16 +45,22 @@ if __name__ == "__main__":
             sport_list.append(d)
     print(sport_list)
     print(sport_list[0].to_json())
+    
     # Escribiremos el archivo en formato JSON
     import json
     archivo_json = "deportes.json"
+    
     #Convert all sports to JSON format
     sports_json = [sport.to_json() for sport in sport_list]
+    
     #Write the entire list as a single JSON format 
     with open(archivo_json, "w") as file:
         for d in sport_list:
             json.dump(sports_json, file, indent=4)
-            ''' json.dump(d.to_json(), file)
-            file.write("\n")'''
+            
     # Leemos el archivo JSON
     sport_list_json = []
+    with open(archivo_json, "r") as file:
+        sport_list_json = json.load(file)
+    print(sport_list_json)
+    print(repr(sport_list_json[0]))
