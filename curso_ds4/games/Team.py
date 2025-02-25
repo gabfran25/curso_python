@@ -1,7 +1,7 @@
 '''
     Clase Team: Equipo
 '''
-
+ 
 from Athlete import Athlete #exportamos la clase 'Athlete'
 from Sport import Sport #exportamos la clase 'Sport'
 

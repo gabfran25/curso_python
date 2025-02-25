@@ -34,6 +34,7 @@ if __name__ == "__main__":
     lmx = Sport("Soccer", 11, "Liga MX")
     nba = Sport("Basketball", 5, "NBA")
     lista_deportes = [nfl, lmp, mlb, lmx, nba, s]
+    #Salvamos objetos como texto (su represención como string)
     archivo_deportes = "deportes.txt"
     with open(archivo_deportes, "w") as file:
         for d in lista_deportes:
