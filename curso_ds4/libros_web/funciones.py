@@ -18,9 +18,24 @@ def busca_en_titulo(diccionario,palabra)->list:
             lista.append(libro)
     return lista
 
+def crea_diccionario(lista:list, llave:str)->dict:
+    '''Crea un diccionario con la llave indicada y el resto de los datos como valores'''
+    return {x[llave]:x for x in lista}
+
+def busca_en_diccionario(diccionario:dict, palabra:str)->list:
+    '''Busca una palabra en los valores del diccionario y devuelve una lista con los resultados'''
+    lista = []
+    for llave, libro in diccionario.items():
+        if palabra in llave.lower():
+            lista.append(libro)
+    return lista
+
 if __name__ == '__main__':
     archivo_csv = 'booklist2000.csv'
     lista_libros = lee_archivo_csv(archivo_csv)
-    diccionario_libros = crea_diccionario_titulos(lista_libros)
-    resultado = busca_en_titulo(diccionario_libros, 'war')
+    diccionario_libros = crea_diccionario(lista_libros,'title')
+    resultado = busca_en_diccionario(diccionario_libros, 'rebels')
+    print(resultado)
+    diccionario_autores = crea_diccionario(lista_libros,'author')
+    resultado = busca_en_diccionario(diccionario_autores, 'james')
     print(resultado)
