@@ -37,6 +37,7 @@ def main(url:str, archivo_salida:str):
     main_content = soup.find('table', id='dllsTable')
     if main_content:
         trs = main_content.find_all('tr')
+        diccionario_trs = {}
         print(f"Encontré {len(trs)} elementos <tr> en la tabla")
         for tr in trs:
             #print(f"{li.a.get('href')} : {li.a.text.strip()}")
@@ -52,7 +53,11 @@ def main(url:str, archivo_salida:str):
                 print(f"1: {tds[1].text.strip()}")
                 print(f"2: {tds[2].text.strip()}")
                 print(f"3: {tds[3].text.strip()}")
-                print(f"4: {tds[4].text.strip()}")       
+                print(f"4: {tds[4].text.strip()}")
+            if tr.a is not None:
+                diccionario_trs[tr.a.text.strip(tds[0])] = tr.a.get(tds[3])
+                lista = [{'pelicula':k,'registro':{'compra' : v, 'venta': v}} for k,v in diccionario_trs.items()]
+                print(lista)
       
     '''  # lis = main_content.find_all('table id')
         lis = main_content.find_all('tr')
@@ -76,7 +81,7 @@ if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='Scrapper para dólar')
     parser.add_argument('--url', type=str, help='URL de la página del dólar')
     parser.add_argument('--output', type=str, default='eldolar.html')
-    # parser.add_argument('--output_json', type=str, default='eldolar.json')
+    parser.add_argument('--output_json', type=str, default='eldolar.json')
     args = parser.parse_args()
     url = args.url
     output = args.output
